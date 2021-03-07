@@ -39,9 +39,17 @@ def form_example():
                   <input type="submit" value="Submit">
               </form>'''
 
-@app.route('/json_example')
+@app.route('/json_example', methods=['POST'])
 def json_example():
-    return 'json example'
+    request_data = request.get_json()
+
+    framework = request_data['framework']
+    language = request_data['language']
+    result = {
+        "var" : framework,
+        "var2" : language
+    }
+    return result
 
 
 
